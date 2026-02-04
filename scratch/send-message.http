@@ -1,0 +1,12 @@
+@baseUrl = http://localhost:8080
+
+### Send a single message
+POST {{baseUrl}}/messages
+Content-Type: application/json
+
+{
+  "message": "Hello from HTTP client"
+}
+
+### Read one message from the queue
+GET {{baseUrl}}/messages

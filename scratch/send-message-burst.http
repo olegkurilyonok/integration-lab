@@ -1,0 +1,17 @@
+@baseUrl = http://localhost:8080
+
+### Send two messages in sequence
+POST {{baseUrl}}/messages
+Content-Type: application/json
+
+{
+  "message": "First message from HTTP client"
+}
+
+###
+POST {{baseUrl}}/messages
+Content-Type: application/json
+
+{
+  "message": "Second message from HTTP client"
+}

@@ -1,0 +1,13 @@
+@baseUrl = http://localhost:8080
+
+### Save a message in Redis (TTL 30s)
+POST {{baseUrl}}/redis/messages
+Content-Type: application/json
+
+{
+  "key": "demo-key",
+  "message": "Hello from Redis"
+}
+
+### Read a message from Redis by key
+GET {{baseUrl}}/redis/messages/demo-key

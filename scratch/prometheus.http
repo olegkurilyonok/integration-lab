@@ -1,0 +1,4 @@
+@baseUrl = http://localhost:8080
+
+### Fetch Prometheus metrics
+GET {{baseUrl}}/actuator/prometheus

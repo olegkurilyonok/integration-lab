@@ -3,6 +3,41 @@ server:
 
 spring:
   application:
-    name: practice-kafka
+    name: integration-lab
+  kafka:
+    bootstrap-servers: localhost:9092
+    admin:
+      fail-fast: false
+    listener:
+      missing-topics-fatal: false
+    consumer:
+      group-id: integration-lab-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+app:
+  kafka:
+    topic: practice-messages
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    prometheus:
+      enabled: true
+  prometheus:
+    metrics:
+      export:
+        enabled: true
 
 

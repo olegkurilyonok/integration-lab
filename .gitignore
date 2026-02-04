@@ -1,6 +1,8 @@
 # IntelliJ / Eclipse
 .idea/
 *.iml
+*.ipr
+*.iws
 .classpath
 .project
 .settings/
@@ -8,11 +10,16 @@
 # Maven / build
 target/
 *.log
+*.class
+*.jar
+*.war
+*.ear
 .mvn/
 mvnw
 mvnw.cmd
 
-# Локальные настройки
 application-local.properties
+application-local.yml
+application-local.yaml
 *.env
 .DS_Store
