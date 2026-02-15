@@ -22,10 +22,24 @@ spring:
     redis:
       host: localhost
       port: 6379
+  datasource:
+    url: jdbc:postgresql://localhost:5432/integration_lab
+    username: integration_lab
+    password: integration_lab
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
 
 app:
   kafka:
     topic: practice-messages
+  queue:
+    drain:
+      fixed-delay-ms: 1000
 
 management:
   endpoints:

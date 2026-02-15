@@ -13,9 +13,13 @@ export const options = {
   },
 };
 
+let localCounter = 0;
+
 export default function () {
   const url = "http://localhost:8080/messages";
-  const payload = JSON.stringify({ message: "hello" });
+  const payload = JSON.stringify({
+    message: `heavy-load-${Date.now()}-${++localCounter}`
+  });
   const params = { headers: { "Content-Type": "application/json" } };
 
   const res = http.post(url, payload, params);
