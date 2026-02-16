@@ -9,3 +9,15 @@ scrape_configs:
     static_configs:
       - targets:
           - host.docker.internal:8080
+  - job_name: postgres
+    static_configs:
+      - targets:
+          - postgres-exporter:9187
+  - job_name: kafka
+    static_configs:
+      - targets:
+          - kafka-exporter:9308
+  - job_name: redis
+    static_configs:
+      - targets:
+          - redis-exporter:9121

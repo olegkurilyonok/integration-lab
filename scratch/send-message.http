@@ -8,5 +8,71 @@ Content-Type: application/json
   "message": "Hello from HTTP client"
 }
 
+### Send multiple messages
+POST {{baseUrl}}/messages/send-multiple
+Content-Type: application/json
+
+{
+  "messages": [
+    "First message from HTTP client",
+    "Second message from HTTP client",
+    "Third message from HTTP client"
+  ]
+}
+
 ### Read one message from the queue
 GET {{baseUrl}}/messages
+
+### Send multiple messages (10+)
+POST {{baseUrl}}/messages/send-multiple
+Content-Type: application/json
+
+ [
+    "Bulk message 01",
+    "Bulk message 02",
+    "Bulk message 03",
+    "Bulk message 04",
+    "Bulk message 05",
+    "Bulk message 06",
+    "Bulk message 07",
+    "Bulk message 08",
+    "Bulk message 09",
+    "Bulk message 10",
+    "Bulk message 11",
+    "Bulk message 12"
+  ]
+
+### Send 20k messages
+POST {{baseUrl}}/messages/generate-20k
+Content-Type: application/json
+
+{}
+
+
+### Send some to Kafka thousands messages
+POST http://localhost:8080/messages/generate?
+    thousands={{$random.integer(100)}}
+
+
+### Send to REDIS some thousands messages
+POST http://localhost:8080/redis/messages/generate?
+    thousands={{$random.integer(10)}}
+
+### Read a message from Redis by key
+GET {{baseUrl}}/redis/messages/demo-key
+
+### Generate thousands messages in Redis
+POST {{baseUrl}}/redis/messages/generate?thousands=500
+
+### Generate 20k messages in Redis
+POST {{baseUrl}}/redis/messages/generate-20k
+
+### Burn CPU for 10 seconds using 2 threads
+POST {{baseUrl}}/test/cpu/burn?seconds=20&threads=2
+
+### Allocate 256 MB of heap (test memory load)
+POST {{baseUrl}}/test/memory/allocate?mb=1256
+
+### Allocate 256 MB of heap (test memory load)
+POST http://localhost:8080/test/memory/allocate?mb=1256
+Content-Type: application/x-www-form-urlencoded

@@ -11,3 +11,9 @@ Content-Type: application/json
 
 ### Read a message from Redis by key
 GET {{baseUrl}}/redis/messages/demo-key
+
+### Generate 5k messages in Redis
+POST {{baseUrl}}/redis/messages/generate?thousands=5
+
+### Generate 20k messages in Redis
+POST {{baseUrl}}/redis/messages/generate-20k

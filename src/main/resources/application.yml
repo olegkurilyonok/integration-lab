@@ -5,7 +5,7 @@ spring:
   application:
     name: integration-lab
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: localhost:9094
     admin:
       fail-fast: false
     listener:
@@ -26,6 +26,11 @@ spring:
     url: jdbc:postgresql://localhost:5432/integration_lab
     username: integration_lab
     password: integration_lab
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 5
+      connection-timeout: 10000
+      idle-timeout: 10000
   jpa:
     hibernate:
       ddl-auto: none
@@ -37,9 +42,18 @@ spring:
 app:
   kafka:
     topic: practice-messages
+  redis:
+    message-ttl: 300s
+    generated-key-prefix: generated
+    generated-message-prefix: Generated redis message
+  memory:
+    max-mb: 4098
+  cpu:
+    max-seconds: 60
+    max-threads: 8
   queue:
     drain:
-      fixed-delay-ms: 1000
+      fixed-delay-ms: 10000
 
 management:
   endpoints:
